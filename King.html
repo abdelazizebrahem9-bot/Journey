@@ -6,135 +6,134 @@
 <title>The King's Journey</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#e4e4e7;font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.6}
-.container{max-width:1100px;margin:0 auto;padding:32px 20px}
-.header{border-bottom:1px solid #27272a;padding-bottom:24px;margin-bottom:32px}
-.mono{font-family:ui-monospace,monospace;font-size:12px;color:#71717a;letter-spacing:0.1em;text-transform:uppercase}
-h1{font-size:42px;font-weight:800;letter-spacing:-0.02em;margin:8px 0}
-.subtitle{color:#a1a1aa}
-.card{background:rgba(24,24,27,0.6);border:1px solid #27272a;border-radius:16px;padding:24px;margin-bottom:24px;backdrop-filter:blur(10px)}
-.card h2{font-size:18px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.card h3{font-size:16px;font-weight:600;margin-bottom:8px}
+body{background:#000;color:#e4e4e7;font-family:Inter,system-ui,sans-serif}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.header{margin-bottom:28px}
+.mono{font-size:12px;color:#71717a;letter-spacing:.1em;text-transform:uppercase}
+h1{font-size:38px;font-weight:800;margin:6px 0}
+.subtitle{color:#a1a1aa;font-size:14px}
+.card{background:#18181b;border:1px solid #27272a;border-radius:14px;padding:20px;margin-bottom:18px}
+.card-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:12px}
+.card h2{font-size:16px;font-weight:600}
+.card h3{font-size:15px;font-weight:600;margin-bottom:6px}
 .amber{color:#fbbf24}
-.grid{display:grid;gap:20px}
-.grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
-.grid-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.progress-bar{height:6px;background:#27272a;border-radius:3px;overflow:hidden;margin-top:8px}
-.progress-fill{height:100%;background:#fbbf24;transition:width 0.3s}
-audio{width:100%;margin-top:12px}
-ul{list-style:none}
-li{display:flex;gap:10px;margin:10px 0;font-size:14px}
-li span:first-child{color:#fbbf24}
-.small{font-size:13px;color:#a1a1aa}
-.btn{display:inline-block;background:#fbbf24;color:#000;padding:10px 20px;border-radius:8px;font-weight:600;text-decoration:none;margin-top:12px}
-.btn:hover{opacity:0.9}
-.tag{display:inline-block;background:#27272a;padding:4px 10px;border-radius:6px;font-size:12px;margin-right:6px}
-hr{border:none;border-top:1px solid #27272a;margin:24px 0}
+.small{font-size:12px;color:#a1a1aa}
+.btn{background:#fbbf24;color:#000;padding:8px 14px;border-radius:8px;font-weight:600;text-decoration:none;font-size:13px;display:inline-block;border:none;cursor:pointer}
+.btn-outline{background:transparent;color:#fbbf24;border:1px solid #fbbf24}
+.grid{display:grid;gap:14px}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:768px){.grid-4,.grid-2{grid-template-columns:1fr}h1{font-size:28px}}
+.progress{height:5px;background:#27272a;border-radius:3px;margin-top:6px;overflow:hidden}
+.fill{height:100%;background:#fbbf24}
+audio{width:100%;margin-top:10px;height:36px}
+ul{list-style:none;margin-top:8px}
+li{display:flex;gap:8px;margin:7px 0;font-size:13px;color:#d4d4d8}
+li span:first-child{color:#fbbf24;flex-shrink:0}
 </style>
 </head>
 <body>
 <div class="container">
   <div class="header">
-    <div class="mono">DAY 2 • 2026 • CAIRO</div>
-    <h1>THE KING'S JOURNEY</h1>
-    <div class="subtitle">17 Hours. No More Chances. Success or Fail Forever.</div>
+    <div class="mono">THE KING'S JOURNEY</div>
+    <h1>17 Hours. No More Chances.</h1>
+    <div class="subtitle">Success or Fail Forever.</div>
   </div>
 
   <div class="card">
-    <h2><span class="amber">●</span> LATEST DECREE</h2>
-    <p class="small">Your voice is your contract. Record daily.</p>
+    <div class="card-header">
+      <div>
+        <h2><span class="amber">●</span> LATEST DECREE</h2>
+        <div class="small">Your voice is your contract</div>
+      </div>
+      <a href="evidence.html?task=English" class="btn-outline btn">Upload</a>
+    </div>
     <audio controls src="decree-day1.m4a"></audio>
-    <p class="small" style="margin-top:8px">Day 1 uploaded. Day 2 recording tonight.</p>
   </div>
 
-  <div class="card" style="border-color:#fbbf24;">
-    <h2><span class="amber">⏱</span> 17-HOUR WAR SCHEDULER</h2>
-    <p>90 minutes work / 15 minutes break. Built for your 17-hour day.</p>
-    <a href="schedule.html" class="btn">OPEN SCHEDULER →</a>
-    <p class="small" style="margin-top:8px">Handling our scheduler. No excuses.</p>
+  <div class="card" style="border-color:#fbbf24">
+    <div class="card-header">
+      <div>
+        <h2><span class="amber">⏱</span> 17-HOUR WAR SCHEDULER</h2>
+        <div class="small">90 min work / 15 min break</div>
+      </div>
+      <a href="schedule.html" class="btn">OPEN →</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-header">
+      <div>
+        <h2><span class="amber">📸</span> DAILY EVIDENCE LOCKER</h2>
+        <div class="small">Insert screenshot + how you solved it</div>
+      </div>
+      <a href="evidence.html" class="btn">OPEN →</a>
+    </div>
   </div>
 
   <div class="grid grid-4">
-    <div class="card">
-      <div class="small">ENGLISH</div>
-      <div style="font-size:24px;font-weight:700;margin:4px 0">2 days</div>
-      <div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div>
-    </div>
-    <div class="card">
-      <div class="small">HTML/CSS</div>
-      <div style="font-size:24px;font-weight:700;margin:4px 0">5%</div>
-      <div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div>
-    </div>
-    <div class="card">
-      <div class="small">PYTHON</div>
-      <div style="font-size:24px;font-weight:700;margin:4px 0">0%</div>
-      <div class="progress-bar"><div class="progress-fill" style="width:2%"></div></div>
-    </div>
-    <div class="card">
-      <div class="small">MATH</div>
-      <div style="font-size:24px;font-weight:700;margin:4px 0">0%</div>
-      <div class="progress-bar"><div class="progress-fill" style="width:2%"></div></div>
-    </div>
+    <div class="card"><div class="small">ENGLISH</div><div style="font-size:22px;font-weight:700">2 days</div><div class="progress"><div class="fill" style="width:15%"></div></div></div>
+    <div class="card"><div class="small">HTML/CSS</div><div style="font-size:22px;font-weight:700">5%</div><div class="progress"><div class="fill" style="width:5%"></div></div></div>
+    <div class="card"><div class="small">PYTHON</div><div style="font-size:22px;font-weight:700">0%</div><div class="progress"><div class="fill" style="width:2%"></div></div></div>
+    <div class="card"><div class="small">MATH</div><div style="font-size:22px;font-weight:700">0%</div><div class="progress"><div class="fill" style="width:2%"></div></div></div>
   </div>
 
   <div class="grid grid-2">
     <div class="card">
-      <h3><span class="amber">1.</span> EMPIRE OF VOICE</h3>
-      <p class="small">English = keys to the world</p>
+      <div class="card-header">
+        <h3><span class="amber">1.</span> EMPIRE OF VOICE</h3>
+        <a href="evidence.html?task=English" class="btn-outline btn">Open</a>
+      </div>
+      <div class="small">English = keys to world</div>
       <ul>
-        <li><span>•</span><span><b>Daily:</b> BBC 6min + shadowing</span></li>
-        <li><span>•</span><span><b>Decree:</b> 2min recording</span></li>
-        <li><span>•</span><span><b>Evidence:</b> audio files in repo</span></li>
+        <li><span>•</span>Daily: BBC 6min + shadowing</li>
+        <li><span>•</span>Decree: 2min recording</li>
+        <li><span>•</span>Evidence: audio + screenshot</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="amber">2.</span> EMPIRE OF CODE</h3>
-      <p class="small">HTML + Python = sites, apps, games</p>
+      <div class="card-header">
+        <h3><span class="amber">2.</span> EMPIRE OF CODE</h3>
+        <a href="evidence.html?task=HTML/CSS" class="btn-outline btn">Open</a>
+      </div>
+      <div class="small">HTML + Python = sites, apps, games</div>
       <ul>
-        <li><span>•</span><span><b>HTML/CSS:</b> 90min/day - build face</span></li>
-        <li><span>•</span><span><b>Python:</b> 90min/day - build brain</span></li>
-        <li><span>•</span><span><b>Project:</b> Dashboard + calculator script</span></li>
-        <li><span>•</span><span><b>Why both:</b> HTML displays, Python processes</span></li>
+        <li><span>•</span>HTML/CSS: 90min - build face</li>
+        <li><span>•</span>Python: 90min - build brain</li>
+        <li><span>•</span>Project: Dashboard + calculator</li>
+        <li><span>•</span>Upload code screenshot daily</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="amber">3.</span> EMPIRE OF LOGIC</h3>
-      <p class="small">Mathematics = power for programming</p>
+      <div class="card-header">
+        <h3><span class="amber">3.</span> EMPIRE OF LOGIC</h3>
+        <a href="evidence.html?task=Math" class="btn-outline btn">Open</a>
+      </div>
+      <div class="small">Mathematics = power</div>
       <ul>
-        <li><span>•</span><span><b>Daily:</b> Khan Academy Algebra 30min</span></li>
-        <li><span>•</span><span><b>Focus:</b> variables, functions, logic</span></li>
-        <li><span>•</span><span><b>Use:</b> game physics, AI, apps</span></li>
-        <li><span>•</span><span><b>Evidence:</b> 5 problems solved/day</span></li>
+        <li><span>•</span>Daily: Khan Algebra 30min</li>
+        <li><span>•</span>Focus: variables, functions</li>
+        <li><span>•</span>Solve 5 problems, screenshot</li>
+        <li><span>•</span>Write how you solved</li>
       </ul>
     </div>
 
     <div class="card">
-      <h3><span class="amber">4.</span> EMPIRE OF MONEY</h3>
-      <p class="small">Build products, not just tutorials</p>
+      <div class="card-header">
+        <h3><span class="amber">4.</span> EMPIRE OF MONEY</h3>
+        <a href="evidence.html?task=Project" class="btn-outline btn">Open</a>
+      </div>
+      <div class="small">Build products, not tutorials</div>
       <ul>
-        <li><span>•</span><span><b>Daily:</b> 2hrs build portfolio</span></li>
-        <li><span>•</span><span><b>Week 1:</b> Finish this dashboard</span></li>
-        <li><span>•</span><span><b>Week 2:</b> Clone 3 landing pages</span></li>
-        <li><span>•</span><span><b>Goal:</b> First $100 client</span></li>
+        <li><span>•</span>Daily: 2hrs portfolio</li>
+        <li><span>•</span>Week 1: Finish dashboard</li>
+        <li><span>•</span>Week 2: Clone 3 sites</li>
+        <li><span>•</span>Goal: First $100</li>
       </ul>
     </div>
   </div>
-
-  <div class="card">
-    <h2>TODAY'S MISSION</h2>
-    <ul>
-      <li><span>□</span><span>Finish freeCodeCamp HTML Steps 1-20</span></li>
-      <li><span>□</span><span>Python Day 1: learn print() and variables</span></li>
-      <li><span>□</span><span>Math: 5 algebra problems</span></li>
-      <li><span>□</span><span>Record Decree Day 2</span></li>
-      <li><span>□</span><span>Commit King.html + schedule.html to GitHub</span></li>
-    </ul>
-  </div>
-
-  <hr>
-  <p class="small" style="text-align:center">Built by Abdelaziz Ebrahem • 17 hours daily • No more chances</p>
 </div>
 </body>
 </html>
