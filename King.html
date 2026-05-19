@@ -1,525 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>OPERATION LEVEL UP — King's Cipher</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The King's Journey</title>
 <style>
-  :root { color-scheme: dark; }
-  html, body { height: 100%; }
-  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; background: #050507; }
-  .mono { font-family: 'JetBrains Mono', monospace; }
-  .grid-bg {
-    background-image: 
-      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-    background-size: 36px 36px;
-  }
-  .gold { color: #E5C76B; }
-  .gold-gradient {
-    background: linear-gradient(92deg, #E5C76B 0%, #F5E3A1 45%, #C9A227 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  .card {
-    background: linear-gradient(180deg, rgba(20,20,26,0.9), rgba(12,12,16,0.9));
-    border: 1px solid rgba(63,63,70,0.5);
-    backdrop-filter: blur(16px);
-  }
-  .card:hover { border-color: rgba(229,199,107,0.3); }
-  .bracket::before, .bracket::after {
-    content: ''; position: absolute; width: 16px; height: 16px; border-color: rgba(229,199,107,0.4);
-  }
-  .bracket::before { top: 10px; left: 10px; border-top: 1.5px solid; border-left: 1.5px solid; }
-  .bracket::after { bottom: 10px; right: 10px; border-bottom: 1.5px solid; border-right: 1.5px solid; }
-  .glow-gold { box-shadow: 0 0 40px rgba(229,199,107,0.12), inset 0 1px 0 rgba(255,255,255,0.05); }
-  input[type="checkbox"] { appearance: none; width: 18px; height: 18px; border: 1.5px solid #3f3f46; border-radius: 5px; display: grid; place-items: center; transition: all .2s; background: #0a0a0f; flex-shrink: 0; }
-  input[type="checkbox"]:checked { background: linear-gradient(180deg, #E5C76B, #C9A227); border-color: #E5C76B; }
-  input[type="checkbox"]:checked::after { content: '✓'; color: #000; font-weight: 800; font-size: 12px; line-height: 1; }
-  .scroll::-webkit-scrollbar { width: 6px; height: 6px; }
-  .scroll::-webkit-scrollbar-thumb { background: #27272a; border-radius: 6px; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#000;color:#e4e4e7;font-family:Inter,system-ui,-apple-system,sans-serif;line-height:1.6}
+.container{max-width:1100px;margin:0 auto;padding:32px 20px}
+.header{border-bottom:1px solid #27272a;padding-bottom:24px;margin-bottom:32px}
+.mono{font-family:ui-monospace,monospace;font-size:12px;color:#71717a;letter-spacing:0.1em;text-transform:uppercase}
+h1{font-size:42px;font-weight:800;letter-spacing:-0.02em;margin:8px 0}
+.subtitle{color:#a1a1aa}
+.card{background:rgba(24,24,27,0.6);border:1px solid #27272a;border-radius:16px;padding:24px;margin-bottom:24px;backdrop-filter:blur(10px)}
+.card h2{font-size:18px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.card h3{font-size:16px;font-weight:600;margin-bottom:8px}
+.amber{color:#fbbf24}
+.grid{display:grid;gap:20px}
+.grid-2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.grid-4{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.progress-bar{height:6px;background:#27272a;border-radius:3px;overflow:hidden;margin-top:8px}
+.progress-fill{height:100%;background:#fbbf24;transition:width 0.3s}
+audio{width:100%;margin-top:12px}
+ul{list-style:none}
+li{display:flex;gap:10px;margin:10px 0;font-size:14px}
+li span:first-child{color:#fbbf24}
+.small{font-size:13px;color:#a1a1aa}
+.btn{display:inline-block;background:#fbbf24;color:#000;padding:10px 20px;border-radius:8px;font-weight:600;text-decoration:none;margin-top:12px}
+.btn:hover{opacity:0.9}
+.tag{display:inline-block;background:#27272a;padding:4px 10px;border-radius:6px;font-size:12px;margin-right:6px}
+hr{border:none;border-top:1px solid #27272a;margin:24px 0}
 </style>
 </head>
-<body class="text-zinc-200 selection:bg-amber-400/30 selection:text-amber-100">
-  <!-- Background -->
-  <div class="fixed inset-0">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(229,199,107,0.08),transparent_60%),radial-gradient(ellipse_at_bottom,_rgba(99,102,241,0.06),transparent_60%)]"></div>
-    <div class="absolute inset-0 grid-bg opacity-[0.4]"></div>
-    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050507]"></div>
+<body>
+<div class="container">
+  <div class="header">
+    <div class="mono">DAY 2 • 2026 • CAIRO</div>
+    <h1>THE KING'S JOURNEY</h1>
+    <div class="subtitle">17 Hours. No More Chances. Success or Fail Forever.</div>
   </div>
 
-  <main class="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6 pb-24">
-    <!-- Header -->
-    <header class="pt-6 md:pt-10">
-      <div class="flex items-start justify-between gap-4">
-        <div class="flex items-center gap-3.5">
-          <div class="relative">
-            <div class="absolute -inset-2 bg-amber-500/20 blur-2xl rounded-full"></div>
-            <div class="relative w-12 h-12 rounded-xl bg-zinc-950 border border-amber-900/40 flex items-center justify-center glow-gold">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" class="text-amber-300">
-                <path d="M4 8l3.5 9 4.5-14 4.5 14 3.5-9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M3 18h18" stroke="currentColor" stroke-opacity=".5" stroke-width="1.5"/>
-              </svg>
-            </div>
-          </div>
-          <div>
-            <div class="mono text-[10px] tracking-[0.28em] text-zinc-500">OPERATION LEVEL UP</div>
-            <h1 class="text-[26px] md:text-[32px] font-extrabold tracking-tight leading-none mt-1">
-              KING'S <span class="gold-gradient">CIPHER</span>
-            </h1>
-          </div>
-        </div>
-        <div class="text-right">
-          <div class="mono text-[11px] tracking-widest text-amber-300/70">CAIRO • AFRICA/CAIRO</div>
-          <div id="cairo-time" class="mono text-xl md:text-2xl font-semibold tabular-nums mt-1">--:--:--</div>
-          <div class="mono text-[10px] text-zinc-500 tracking-widest mt-0.5">OPERATIVE IN FIELD</div>
-        </div>
-      </div>
+  <div class="card">
+    <h2><span class="amber">●</span> LATEST DECREE</h2>
+    <p class="small">Your voice is your contract. Record daily.</p>
+    <audio controls src="decree-day1.m4a"></audio>
+    <p class="small" style="margin-top:8px">Day 1 uploaded. Day 2 recording tonight.</p>
+  </div>
 
-      <!-- Goal Bar -->
-      <div class="mt-7 relative">
-        <div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-r from-amber-500/20 via-yellow-500/10 to-transparent blur-[1px]"></div>
-        <div class="relative card rounded-2xl p-[1px]">
-          <div class="rounded-[15px] bg-black/60 px-5 md:px-7 py-5 md:py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-              <p class="mono text-[11px] tracking-[0.18em] text-zinc-500">PRIMARY OBJECTIVE</p>
-              <p class="text-lg md:text-xl font-medium mt-1.5">Goal: <span class="text-white font-semibold">Master English + Programming</span> <span class="text-zinc-400">in 12 weeks</span></p>
-            </div>
-            <div class="flex items-center gap-3">
-              <span class="px-3 py-1.5 rounded-lg bg-amber-500/10 border border-amber-500/25 text-amber-200 mono text-[11px] tracking-widest">ONLY RESULTS MATTER</span>
-              <button id="init-btn" class="px-3.5 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-xs font-medium transition">INITIATE</button>
-            </div>
-          </div>
-        </div>
-      </div>
+  <div class="card" style="border-color:#fbbf24;">
+    <h2><span class="amber">⏱</span> 17-HOUR WAR SCHEDULER</h2>
+    <p>90 minutes work / 15 minutes break. Built for your 17-hour day.</p>
+    <a href="schedule.html" class="btn">OPEN SCHEDULER →</a>
+    <p class="small" style="margin-top:8px">Handling our scheduler. No excuses.</p>
+  </div>
 
-      <!-- Stats -->
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
-        <div class="card rounded-xl p-4 bracket relative">
-          <div class="mono text-[10px] text-zinc-500 tracking-widest">WEEK</div>
-          <div class="text-2xl font-bold mt-1"><span id="stat-week">0</span><span class="text-zinc-600 text-base">/12</span></div>
-        </div>
-        <div class="card rounded-xl p-4 bracket relative">
-          <div class="mono text-[10px] text-zinc-500 tracking-widest">DAY</div>
-          <div class="text-2xl font-bold mt-1"><span id="stat-day">0</span><span class="text-zinc-600 text-base">/84</span></div>
-        </div>
-        <div class="card rounded-xl p-4 bracket relative">
-          <div class="mono text-[10px] text-zinc-500 tracking-widest">TODAY</div>
-          <div class="text-2xl font-bold mt-1"><span id="stat-today">0</span><span class="text-zinc-600 text-base">%</span></div>
-        </div>
-        <div class="card rounded-xl p-4 bracket relative">
-          <div class="mono text-[10px] text-zinc-500 tracking-widest">STREAK</div>
-          <div class="text-2xl font-bold mt-1"><span id="stat-streak" class="gold">0</span><span class="text-zinc-600 text-base ml-1">days</span></div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Phases -->
-    <section class="mt-10">
-      <h2 class="mono text-[12px] tracking-[0.22em] text-zinc-500 mb-4">THREE-PHASE WARPLAN</h2>
-      <div class="grid md:grid-cols-3 gap-4 md:gap-5">
-        <!-- Phase 1 -->
-        <div class="group relative">
-          <div class="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-b from-amber-500/30 to-transparent blur"></div>
-          <div class="relative card rounded-2xl p-5 h-full">
-            <div class="flex items-start justify-between">
-              <div>
-                <div class="mono text-[10px] tracking-widest text-amber-300/80">PHASE 1 • WEEKS 1–4</div>
-                <h3 class="text-[18px] font-semibold mt-1.5 flex items-center gap-2">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="text-amber-300"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg>
-                  English Command
-                </h3>
-              </div>
-              <span class="px-2 py-1 rounded-md bg-zinc-900 border border-zinc-800 mono text-[10px] text-zinc-400">FOUNDATION</span>
-            </div>
-            <ul class="mt-4 space-y-2.5 text-[14px] text-zinc-300">
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>BBC 6min</b> <span class="text-zinc-500">— daily listening</span></span></li>
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>Duolingo</b> <span class="text-zinc-500">— 15 min sprint</span></span></li>
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>YouGlish</b> <span class="text-zinc-500">— shadowing</span></span></li>
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>Speak 1 Decree</b> <span class="text-zinc-500">— aloud, record</span></span></li>
-                     </ul>
-
-              <div class="mt-4 p-3 rounded-xl bg-zinc-900/50 border border-zinc-800">
-                  <div class="mono text-[11px] text-zinc-500 mb-2">LATEST DECREE</div>
-                  <audio controls preload="metadata" style="width:100%; height:32px;">
-                    <source src="decree-day1.m4a" type="audio/mp4">
-                    Your browser does not support audio.
-                  </audio>
-                  <p style="color:#fbbf24; font-size:12px; margin-top:6px;">Day 1 – 19 May 2026</p>
-                </div>
-
-            <div class="mt-5">
-              <div class="flex justify-between mono text-[11px] text-zinc-500 mb-1.5"><span>PROGRESS</span><span id="p1-pct">0%</span></div>
-              <div class="h-1.5 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800"><div id="p1-bar" class="h-full w-0 bg-gradient-to-r from-amber-600 to-yellow-400 transition-all duration-700"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phase 2 -->
-        <div class="group relative">
-          <div class="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-b from-amber-500/30 to-transparent blur"></div>
-          <div class="relative card rounded-2xl p-5 h-full">
-            <div class="flex items-start justify-between">
-              <div>
-                <div class="mono text-[10px] tracking-widest text-amber-300/80">PHASE 2 • WEEKS 1–8</div>
-                <h3 class="text-[18px] font-semibold mt-1.5 flex items-center gap-2">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="text-amber-300"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-                  Kingdom Code
-                </h3>
-              </div>
-              <span class="px-2 py-1 rounded-md bg-zinc-900 border border-zinc-800 mono text-[10px] text-zinc-400">BUILD</span>
-            </div>
-            <ul class="mt-4 space-y-2.5 text-[14px] text-zinc-300">
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>freeCodeCamp</b> <span class="text-zinc-500">— HTML/CSS/JS track</span></span></li>
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>CS50</b> <span class="text-zinc-500">— 1 lecture/week</span></span></li>
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>1 Project/week</b> <span class="text-zinc-500">— ship it</span></span></li>
-            </ul>
-            <div class="mt-5">
-              <div class="flex justify-between mono text-[11px] text-zinc-500 mb-1.5"><span>PROGRESS</span><span id="p2-pct">0%</span></div>
-              <div class="h-1.5 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800"><div id="p2-bar" class="h-full w-0 bg-gradient-to-r from-amber-600 to-yellow-400 transition-all duration-700"></div></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Phase 3 -->
-        <div class="group relative">
-          <div class="absolute -inset-[1px] rounded-2xl opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-b from-amber-500/30 to-transparent blur"></div>
-          <div class="relative card rounded-2xl p-5 h-full">
-            <div class="flex items-start justify-between">
-              <div>
-                <div class="mono text-[10px] tracking-widest text-amber-300/80">PHASE 3 • WEEKS 5–12</div>
-                <h3 class="text-[18px] font-semibold mt-1.5 flex items-center gap-2">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" class="text-amber-300"><path d="M12 3l7 4v5c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V7l7-4z"/></svg>
-                  Combine
-                </h3>
-              </div>
-              <span class="px-2 py-1 rounded-md bg-zinc-900 border border-zinc-800 mono text-[10px] text-zinc-400">DOMINATE</span>
-            </div>
-            <ul class="mt-4 space-y-2.5 text-[14px] text-zinc-300">
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>LeetCode Easy</b> <span class="text-zinc-500">— 1/day</span></span></li>
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>Dev Blog</b> <span class="text-zinc-500">— in English</span></span></li>
-              <li class="flex gap-2.5"><span class="text-amber-400 mt-0.5">▸</span><span><b>Fireship</b> <span class="text-zinc-500">— daily video</span></span></li>
-            </ul>
-            <div class="mt-5">
-              <div class="flex justify-between mono text-[11px] text-zinc-500 mb-1.5"><span>PROGRESS</span><span id="p3-pct">0%</span></div>
-              <div class="h-1.5 bg-zinc-900 rounded-full overflow-hidden border border-zinc-800"><div id="p3-bar" class="h-full w-0 bg-gradient-to-r from-amber-600 to-yellow-400 transition-all duration-700"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Missing Pieces -->
-    <section class="mt-8 grid lg:grid-cols-5 gap-4">
-      <div class="lg:col-span-3 card rounded-2xl p-5 md:p-6 relative overflow-hidden">
-        <div class="absolute -top-20 -right-20 w-60 h-60 bg-amber-500/10 blur-[80px] rounded-full"></div>
-        <div class="relative">
-          <div class="flex items-center justify-between">
-            <h3 class="mono text-[12px] tracking-[0.2em] text-zinc-400">MISSING PIECES ADDED</h3>
-            <span class="px-2.5 py-1 rounded-md bg-amber-500/10 border border-amber-500/20 text-amber-200 mono text-[10px] tracking-widest">PRACTICE LOOP</span>
-          </div>
-          <div class="mt-6 flex items-center justify-between gap-3">
-            <div class="flex-1 text-center">
-              <div class="mx-auto w-20 h-20 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-center justify-center mb-3">
-                <span class="mono text-[11px] text-amber-300">INPUT</span>
-              </div>
-              <p class="text-xs text-zinc-400">BBC • CS50 • Fireship</p>
-            </div>
-            <div class="text-amber-400/60 text-2xl">→</div>
-            <div class="flex-1 text-center">
-              <div class="mx-auto w-20 h-20 rounded-2xl bg-zinc-950 border border-amber-900/40 flex items-center justify-center mb-3 glow-gold">
-                <span class="mono text-[11px] text-amber-200">OUTPUT</span>
-              </div>
-              <p class="text-xs text-zinc-400">Speak • Code • Write</p>
-            </div>
-            <div class="text-amber-400/60 text-2xl">→</div>
-            <div class="flex-1 text-center">
-              <div class="mx-auto w-20 h-20 rounded-2xl bg-zinc-950 border border-zinc-800 flex items-center justify-center mb-3">
-                <span class="mono text-[11px] text-amber-300">FEEDBACK</span>
-              </div>
-              <p class="text-xs text-zinc-400">AI Agent Daily</p>
-            </div>
-          <p class="mt-6 text-[13px] text-zinc-400 border-t border-zinc-800 pt-4">No passive learning. Every input forces an output. AI reviews your speech and code nightly. Iterate or perish.</p>
-        </div>
-      </div>
-
-      <div class="lg:col-span-2 card rounded-2xl p-5 md:p-6">
-        <div class="flex items-center justify-between">
-          <h3 class="mono text-[12px] tracking-[0.2em] text-zinc-400">ASSESSMENT CALENDAR</h3>
-          <span class="mono text-[10px] text-zinc-500">WEEK 0 • 4 • 8 • 12</span>
-        </div>
-        <div class="mt-6 relative">
-          <div class="absolute top-[14px] left-0 right-0 h-[2px] bg-zinc-800"></div>
-          <div id="timeline" class="relative grid grid-cols-4">
-            <!-- points injected by JS -->
-          </div>
-        </div>
-        <div class="mt-6 grid grid-cols-2 gap-2.5 text-[12px]">
-          <div class="p-3 rounded-xl bg-zinc-950 border border-zinc-800">
-            <div class="mono text-[10px] text-zinc-500">BASELINE</div>
-            <div class="mt-1">Record 2-min intro. Screenshot typing speed.</div>
-          </div>
-          <div class="p-3 rounded-xl bg-zinc-950 border border-zinc-800">
-            <div class="mono text-[10px] text-zinc-500">CHECKS</div>
-            <div class="mt-1">EFSET • FCC cert • LeetCode solved</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Daily Mission Tracker -->
-    <section class="mt-8">
-      <div class="card rounded-2xl p-5 md:p-6">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-          <div>
-            <h3 class="text-[18px] font-semibold flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Daily Mission Tracker
-            </h3>
-            <p class="text-[13px] text-zinc-400 mt-1">Cairo time. Check boxes. No excuses. Resets at midnight.</p>
-          </div>
-          <div class="flex items-center gap-3">
-            <div class="px-3 py-1.5 rounded-lg bg-zinc-950 border border-zinc-800 mono text-[11px]"><span id="missions-done">0</span>/<span id="missions-total">0</span> COMPLETE</div>
-            <button id="reset-day" class="px-3 py-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-xs transition">Reset</button>
-          </div>
-        </div>
-
-        <div id="mission-list" class="mt-5 grid md:grid-cols-2 gap-2.5"></div>
-
-        <div class="mt-5 pt-4 border-t border-zinc-800 flex items-center justify-between">
-          <p class="mono text-[11px] tracking-widest text-zinc-500">DECREE OF THE DAY</p>
-          <p id="decree" class="text-sm text-amber-200/90 text-right">Speak like a king. Code like a weapon.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Assessment Tools -->
-    <section class="mt-8">
-      <h2 class="mono text-[12px] tracking-[0.22em] text-zinc-500 mb-4">LEVEL ASSESSMENT TOOLS</h2>
-      <div class="grid md:grid-cols-3 gap-3">
-        <div class="card rounded-xl p-4 hover:border-amber-900/40 transition">
-          <div class="flex items-center justify-between">
-            <h4 class="font-medium">English Level</h4>
-            <span class="mono text-[10px] px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400">EFSET</span>
-          </div>
-          <p class="text-[13px] text-zinc-400 mt-2">Take 15-min test. Save score screenshot Week 0/4/8/12.</p>
-          <a href="https://www.efset.org" target="_blank" class="inline-flex items-center gap-1 mt-3 text-[12px] text-amber-300 hover:text-amber-200">Open EFSET →</a>
-        </div>
-        <div class="card rounded-xl p-4 hover:border-amber-900/40 transition">
-          <div class="flex items-center justify-between">
-            <h4 class="font-medium">Speaking Check</h4>
-            <span class="mono text-[10px] px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400">Youglish</span>
-          </div>
-          <p class="text-[13px] text-zinc-400 mt-2">Record 1-min shadowing daily. Compare Week 0 vs Week 12.</p>
-          <a href="https://youglish.com" target="_blank" class="inline-flex items-center gap-1 mt-3 text-[12px] text-amber-300 hover:text-amber-200">Open YouGlish →</a>
-        </div>
-        <div class="card rounded-xl p-4 hover:border-amber-900/40 transition">
-          <div class="flex items-center justify-between">
-            <h4 class="font-medium">Code Progress</h4>
-            <span class="mono text-[10px] px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400">FCC</span>
-          </div>
-          <p class="text-[13px] text-zinc-400 mt-2">Track Responsive Web & JS certs. Push projects to GitHub.</p>
-          <a href="https://freecodecamp.org" target="_blank" class="inline-flex items-center gap-1 mt-3 text-[12px] text-amber-300 hover:text-amber-200">Open freeCodeCamp →</a>
-        </div>
-        <div class="card rounded-xl p-4 hover:border-amber-900/40 transition">
-          <div class="flex items-center justify-between">
-            <h4 class="font-medium">CS50 Harvard</h4>
-            <span class="mono text-[10px] px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400">WEEKLY</span>
-          </div>
-          <p class="text-[13px] text-zinc-400 mt-2">1 lecture/week minimum. Submit problem sets.</p>
-          <a href="https://cs50.harvard.edu/x/" target="_blank" class="inline-flex items-center gap-1 mt-3 text-[12px] text-amber-300 hover:text-amber-200">Open CS50 →</a>
-        </div>
-        <div class="card rounded-xl p-4 hover:border-amber-900/40 transition">
-          <div class="flex items-center justify-between">
-            <h4 class="font-medium">LeetCode</h4>
-            <span class="mono text-[10px] px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400">EASY</span>
-          </div>
-          <p class="text-[13px] text-zinc-400 mt-2">Solve 1 Easy daily from Week 5. Track streak.</p>
-          <a href="https://leetcode.com/problemset/?difficulty=EASY" target="_blank" class="inline-flex items-center gap-1 mt-3 text-[12px] text-amber-300 hover:text-amber-200">Open LeetCode →</a>
-        </div>
-        <div class="card rounded-xl p-4 hover:border-amber-900/40 transition">
-          <div class="flex items-center justify-between">
-            <h4 class="font-medium">Dev Blog</h4>
-            <span class="mono text-[10px] px-2 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400">ENGLISH</span>
-          </div>
-          <p class="text-[13px] text-zinc-400 mt-2">Publish 3 lines minimum daily. English only.</p>
-          <a href="https://hashnode.com" target="_blank" class="inline-flex items-center gap-1 mt-3 text-[12px] text-amber-300 hover:text-amber-200">Start Writing →</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Footer War Room -->
-    <div class="mt-12 text-center">
-      <p class="mono text-[11px] tracking-[0.2em] text-zinc-600">KING'S CIPHER • CAIRO COMMAND</p>
-      <p class="text-[13px] text-zinc-500 mt-2">Consistency beats intensity. 12 weeks. No zero days.</p>
+  <div class="grid grid-4">
+    <div class="card">
+      <div class="small">ENGLISH</div>
+      <div style="font-size:24px;font-weight:700;margin:4px 0">2 days</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div>
     </div>
-  </main>
+    <div class="card">
+      <div class="small">HTML/CSS</div>
+      <div style="font-size:24px;font-weight:700;margin:4px 0">5%</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:5%"></div></div>
+    </div>
+    <div class="card">
+      <div class="small">PYTHON</div>
+      <div style="font-size:24px;font-weight:700;margin:4px 0">0%</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:2%"></div></div>
+    </div>
+    <div class="card">
+      <div class="small">MATH</div>
+      <div style="font-size:24px;font-weight:700;margin:4px 0">0%</div>
+      <div class="progress-bar"><div class="progress-fill" style="width:2%"></div></div>
+    </div>
+  </div>
 
-<script>
-  const $ = s => document.querySelector(s);
-  const cairoNow = () => new Date(new Date().toLocaleString('en-US', {timeZone: 'Africa/Cairo'}));
+  <div class="grid grid-2">
+    <div class="card">
+      <h3><span class="amber">1.</span> EMPIRE OF VOICE</h3>
+      <p class="small">English = keys to the world</p>
+      <ul>
+        <li><span>•</span><span><b>Daily:</b> BBC 6min + shadowing</span></li>
+        <li><span>•</span><span><b>Decree:</b> 2min recording</span></li>
+        <li><span>•</span><span><b>Evidence:</b> audio files in repo</span></li>
+      </ul>
+    </div>
 
-  // Clock
-  function tick() {
-    const now = cairoNow();
-    $('#cairo-time').textContent = now.toLocaleTimeString('en-GB', {hour12:false});
-  }
-  setInterval(tick, 1000); tick();
+    <div class="card">
+      <h3><span class="amber">2.</span> EMPIRE OF CODE</h3>
+      <p class="small">HTML + Python = sites, apps, games</p>
+      <ul>
+        <li><span>•</span><span><b>HTML/CSS:</b> 90min/day - build face</span></li>
+        <li><span>•</span><span><b>Python:</b> 90min/day - build brain</span></li>
+        <li><span>•</span><span><b>Project:</b> Dashboard + calculator script</span></li>
+        <li><span>•</span><span><b>Why both:</b> HTML displays, Python processes</span></li>
+      </ul>
+    </div>
 
-  // Start date
-  const START_KEY = 'kc-start';
-  let start = localStorage.getItem(START_KEY);
-  const initBtn = $('#init-btn');
-  function setStart(d) {
-    localStorage.setItem(START_KEY, d.toISOString());
-    start = d.toISOString();
-    location.reload();
-  }
-  initBtn.onclick = () => {
-    if (!start) setStart(cairoNow());
-    else {
-      if (confirm('Restart Operation from today? This resets week/day counters.')) {
-        localStorage.removeItem(START_KEY);
-        setStart(cairoNow());
-      }
-    }
-  };
-  if (!start) {
-    initBtn.textContent = 'INITIATE';
-    initBtn.classList.add('bg-amber-500/20','border-amber-500/30','text-amber-200','hover:bg-amber-500/30');
-  } else {
-    initBtn.textContent = 'RESTART';
-  }
+    <div class="card">
+      <h3><span class="amber">3.</span> EMPIRE OF LOGIC</h3>
+      <p class="small">Mathematics = power for programming</p>
+      <ul>
+        <li><span>•</span><span><b>Daily:</b> Khan Academy Algebra 30min</span></li>
+        <li><span>•</span><span><b>Focus:</b> variables, functions, logic</span></li>
+        <li><span>•</span><span><b>Use:</b> game physics, AI, apps</span></li>
+        <li><span>•</span><span><b>Evidence:</b> 5 problems solved/day</span></li>
+      </ul>
+    </div>
 
-  const startDate = start ? new Date(start) : cairoNow();
-  const diffMs = cairoNow() - startDate;
-  const dayNum = Math.max(1, Math.floor(diffMs / 86400000) + 1);
-  const weekNum = Math.min(12, Math.max(1, Math.ceil(dayNum / 7)));
-  $('#stat-day').textContent = Math.min(dayNum,84);
-  $('#stat-week').textContent = weekNum;
+    <div class="card">
+      <h3><span class="amber">4.</span> EMPIRE OF MONEY</h3>
+      <p class="small">Build products, not just tutorials</p>
+      <ul>
+        <li><span>•</span><span><b>Daily:</b> 2hrs build portfolio</span></li>
+        <li><span>•</span><span><b>Week 1:</b> Finish this dashboard</span></li>
+        <li><span>•</span><span><b>Week 2:</b> Clone 3 landing pages</span></li>
+        <li><span>•</span><span><b>Goal:</b> First $100 client</span></li>
+      </ul>
+    </div>
+  </div>
 
-  // Missions
-  const missions = [
-    {id:'bbc', label:'BBC 6 Minute English', href:'https://www.bbc.co.uk/learningenglish/english/features/6-minute-english', phase:1},
-    {id:'duo', label:'Duolingo • 15 min', href:'https://duolingo.com', phase:1},
-    {id:'youglish', label:'YouGlish Shadowing • 5 phrases', href:'https://youglish.com', phase:1},
-    {id:'decree', label:'Speak 1 Decree Aloud', desc:'Record 60s voice note', phase:1},
-    {id:'fcc', label:'freeCodeCamp • 45 min', href:'https://freecodecamp.org', phase:2},
-    {id:'project', label:'Build • Ship progress', desc:'Commit to GitHub', phase:2},
-    {id:'cs50', label:'CS50 • 1 lecture (weekly)', href:'https://cs50.harvard.edu/x/', phase:2, weekly:true},
-    {id:'leetcode', label:'LeetCode Easy • 1 problem', href:'https://leetcode.com/problemset?difficulty=EASY', phase:3},
-    {id:'fireship', label:'Fireship • 1 video', href:'https://fireship.io', phase:3},
-    {id:'blog', label:'Dev Blog • 3 lines in English', href:'https://hashnode.com', phase:3},
-  ];
-  $('#missions-total').textContent = missions.length;
+  <div class="card">
+    <h2>TODAY'S MISSION</h2>
+    <ul>
+      <li><span>□</span><span>Finish freeCodeCamp HTML Steps 1-20</span></li>
+      <li><span>□</span><span>Python Day 1: learn print() and variables</span></li>
+      <li><span>□</span><span>Math: 5 algebra problems</span></li>
+      <li><span>□</span><span>Record Decree Day 2</span></li>
+      <li><span>□</span><span>Commit King.html + schedule.html to GitHub</span></li>
+    </ul>
+  </div>
 
-  const todayKey = 'kc-' + cairoNow().toISOString().slice(0,10);
-  let saved = {};
-  try { saved = JSON.parse(localStorage.getItem(todayKey) || '{}'); } catch {}
-
-  const list = $('#mission-list');
-  missions.forEach(m => {
-    const row = document.createElement('label');
-    row.className = 'group flex items-center gap-3 p-3 rounded-xl bg-zinc-950/70 border border-zinc-800 hover:border-zinc-700 cursor-pointer transition';
-    row.innerHTML = `
-      <input type="checkbox" data-id="${m.id}" ${saved[m.id] ? 'checked':''}>
-      <div class="flex-1 min-w-0">
-        <div class="flex items-center gap-2">
-          <span class="text-[14px] ${saved[m.id] ? 'line-through text-zinc-500':''}">${m.label}</span>
-          ${m.weekly ? '<span class="mono text-[9px] px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400">WEEKLY</span>':''}
-          <span class="mono text-[9px] px-1.5 py-0.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-500">P${m.phase}</span>
-        </div>
-        ${m.desc ? `<div class="text-[11px] text-zinc-500 mt-0.5">${m.desc}</div>`:''}
-      </div>
-      ${m.href ? `<a href="${m.href}" target="_blank" class="opacity-0 group-hover:opacity-100 text-zinc-500 hover:text-amber-300 transition" onclick="event.stopPropagation()">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      </a>`:''}
-    `;
-    list.appendChild(row);
-  });
-
-  function updateProgress() {
-    const checks = [...document.querySelectorAll('#mission-list input')];
-    const done = checks.filter(c => c.checked).length;
-    $('#missions-done').textContent = done;
-    const pct = Math.round((done / missions.length) * 100);
-    $('#stat-today').textContent = pct;
-
-    // phase bars
-    const p1 = missions.filter(m=>m.phase===1);
-    const p2 = missions.filter(m=>m.phase===2);
-    const p3 = missions.filter(m=>m.phase===3);
-    const calc = arr => Math.round((arr.filter(m=>saved[m.id]).length / arr.length)*100);
-    const p1pct = calc(p1), p2pct = calc(p2), p3pct = calc(p3);
-    $('#p1-pct').textContent = p1pct+'%'; $('#p1-bar').style.width = p1pct+'%';
-    $('#p2-pct').textContent = p2pct+'%'; $('#p2-bar').style.width = p2pct+'%';
-    $('#p3-pct').textContent = p3pct+'%'; $('#p3-bar').style.width = p3pct+'%';
-
-    // streak
-    let streak = 0;
-    for (let i=0; i<30; i++) {
-      const d = new Date(cairoNow()); d.setDate(d.getDate()-i);
-      const key = 'kc-' + d.toISOString().slice(0,10);
-      const day = JSON.parse(localStorage.getItem(key) || '{}');
-      const dayDone = Object.values(day).filter(Boolean).length;
-      if (dayDone >= 6) streak++; else if (i>0) break;
-    }
-    $('#stat-streak').textContent = streak;
-  }
-
-  list.addEventListener('change', e => {
-    if (e.target.matches('input[type="checkbox"]')) {
-      const id = e.target.dataset.id;
-      saved[id] = e.target.checked;
-      localStorage.setItem(todayKey, JSON.stringify(saved));
-      e.target.closest('label').querySelector('span.text-\[14px\]').classList.toggle('line-through', e.target.checked);
-      e.target.closest('label').querySelector('span.text-\[14px\]').classList.toggle('text-zinc-500', e.target.checked);
-      updateProgress();
-    }
-  });
-  $('#reset-day').onclick = () => {
-    if (confirm('Reset today\'s missions?')) {
-      localStorage.removeItem(todayKey);
-      saved = {};
-      document.querySelectorAll('#mission-list input').forEach(i=>i.checked=false);
-      document.querySelectorAll('#mission-list span.text-\[14px\]').forEach(s=>s.classList.remove('line-through','text-zinc-500'));
-      updateProgress();
-    }
-  };
-  updateProgress();
-
-  // Timeline
-  const timeline = $('#timeline');
-  [0,4,8,12].forEach((w,i)=>{
-    const d = new Date(startDate); d.setDate(d.getDate() + w*7);
-    const done = weekNum > w || (w===0);
-    const el = document.createElement('div');
-    el.className = 'text-center';
-    el.innerHTML = `
-      <div class="relative z-10 mx-auto w-[28px] h-[28px] rounded-full flex items-center justify-center border ${done ? 'bg-amber-500/20 border-amber-400/50 text-amber-200':'bg-zinc-900 border-zinc-700 text-zinc-500'}">
-        <span class="mono text-[11px] font-semibold">${w}</span>
-      </div>
-      <div class="mt-2 mono text-[10px] ${done?'text-zinc-300':'text-zinc-600'}">WEEK ${w}</div>
-      <div class="mono text-[10px] text-zinc-500">${d.toLocaleDateString('en-GB',{day:'2-digit', month:'short'})}</div>
-    `;
-    timeline.appendChild(el);
-  });
-
-  // Decrees
-  const decrees = [
-    'Speak like a king. Code like a weapon.',
-    'Output daily, or disappear.',
-    'English opens doors. Code builds kingdoms.',
-    'No zero days in Cairo.',
-    'Ship one thing. Every week.',
-    'Shadowing > passive listening.',
-    'Results only. Excuses burn.',
-  ];
-  $('#decree').textContent = decrees[new Date().getDate() % decrees.length];
-</script>
+  <hr>
+  <p class="small" style="text-align:center">Built by Abdelaziz Ebrahem • 17 hours daily • No more chances</p>
+</div>
 </body>
 </html>
