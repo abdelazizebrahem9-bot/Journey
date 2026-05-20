@@ -1,139 +1,274 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The King's Journey</title>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#000;color:#e4e4e7;font-family:Inter,system-ui,sans-serif}
-.container{max-width:1100px;margin:0 auto;padding:24px}
-.header{margin-bottom:28px}
-.mono{font-size:12px;color:#71717a;letter-spacing:.1em;text-transform:uppercase}
-h1{font-size:38px;font-weight:800;margin:6px 0}
-.subtitle{color:#a1a1aa;font-size:14px}
-.card{background:#18181b;border:1px solid #27272a;border-radius:14px;padding:20px;margin-bottom:18px}
-.card-header{display:flex;justify-content:space-between;align-items:start;margin-bottom:12px}
-.card h2{font-size:16px;font-weight:600}
-.card h3{font-size:15px;font-weight:600;margin-bottom:6px}
-.amber{color:#fbbf24}
-.small{font-size:12px;color:#a1a1aa}
-.btn{background:#fbbf24;color:#000;padding:8px 14px;border-radius:8px;font-weight:600;text-decoration:none;font-size:13px;display:inline-block;border:none;cursor:pointer}
-.btn-outline{background:transparent;color:#fbbf24;border:1px solid #fbbf24}
-.grid{display:grid;gap:14px}
-.grid-4{grid-template-columns:repeat(4,1fr)}
-.grid-2{grid-template-columns:repeat(2,1fr)}
-@media(max-width:768px){.grid-4,.grid-2{grid-template-columns:1fr}h1{font-size:28px}}
-.progress{height:5px;background:#27272a;border-radius:3px;margin-top:6px;overflow:hidden}
-.fill{height:100%;background:#fbbf24}
-audio{width:100%;margin-top:10px;height:36px}
-ul{list-style:none;margin-top:8px}
-li{display:flex;gap:8px;margin:7px 0;font-size:13px;color:#d4d4d8}
-li span:first-child{color:#fbbf24;flex-shrink:0}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The King's Journey</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: url('parents.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: -1;
+    }
+    
+    .container {
+      max-width: 900px; margin: 0 auto;
+      background: rgba(20, 20, 20, 0.85);
+      padding: 30px; border-radius: 15px;
+      border: 2px solid #d4af37;
+      box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+    }
+    
+    h1, h2, h3 { color: #d4af37; text-align: center; margin: 20px 0; }
+    h1 { font-size: 2.5rem; text-shadow: 2px 2px 4px #000; }
+    h2 { font-size: 1.8rem; border-bottom: 1px solid #d4af37; padding-bottom: 10px; }
+    
+    .section {
+      margin: 25px 0; padding: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 10px; border-left: 4px solid #d4af37;
+    }
+    
+    button {
+      background: #d4af37; color: #000; border: none;
+      padding: 12px 25px; font-size: 1rem; font-weight: bold;
+      border-radius: 5px; cursor: pointer; margin: 10px 5px;
+      transition: all 0.3s;
+    }
+    button:hover { background: #fff; transform: scale(1.05); }
+    
+    .task-item {
+      background: rgba(212, 175, 55, 0.1);
+      padding: 12px; margin: 10px 0; border-radius: 5px;
+      border: 1px solid #d4af37;
+    }
+    
+    .progress-bar {
+      width: 100%; height: 25px; background: #333;
+      border-radius: 10px; margin: 10px 0; overflow: hidden;
+    }
+    
+    .progress-fill {
+      height: 100%; background: linear-gradient(90deg, #d4af37, #f4e06d);
+      text-align: center; line-height: 25px; color: #000;
+      font-weight: bold; transition: width 0.5s;
+    }
+    
+    ul { list-style: none; padding-left: 20px; }
+    li { margin: 8px 0; }
+    li::before { content: '● '; color: #d4af37; }
+  </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <div class="mono">THE KING'S JOURNEY</div>
-    <h1>17 Hours. No More Chances.</h1>
-    <div class="subtitle">Success or Fail Forever.</div>
-  </div>
-
-  <div class="card">
-    <div class="card-header">
-      <div>
-        <h2><span class="amber">●</span> LATEST DECREE</h2>
-        <div class="small">Your voice is your contract</div>
-      </div>
-      <a href="evidence.html?task=English" class="btn-outline btn">Upload</a>
+  <div class="container">
+    <h1>THE KING'S JOURNEY</h1>
+    
+    <div class="section">
+      <h2>17 Hours. No More Chances.</h2>
+      <p style="text-align:center; font-size: 1.2rem;">Success or Fail Forever.</p>
     </div>
-    <audio controls src="decree-day1.m4a"></audio>
-  </div>
 
-  <div class="card" style="border-color:#fbbf24">
-    <div class="card-header">
-      <div>
-        <h2><span class="amber">⏱</span> 17-HOUR WAR SCHEDULER</h2>
-        <div class="small">90 min work / 15 min break</div>
+    <div class="section">
+      <h2>● LATEST DECREE</h2>
+      <p style="text-align:center; font-size: 1.1rem;">Your voice is your contract</p>
+      <div style="text-align:center;">
+        <button onclick="handleUpload()">📤 Upload Evidence</button>
       </div>
-      <a href="schedule.html" class="btn">OPEN →</a>
     </div>
-  </div>
 
-  <div class="card">
-    <div class="card-header">
-      <div>
-        <h2><span class="amber">📸</span> DAILY EVIDENCE LOCKER</h2>
-        <div class="small">Insert screenshot + how you solved it</div>
-      </div>
-      <a href="evidence.html" class="btn">OPEN →</a>
+    <div class="section">
+      <h2>⏱ 17-HOUR WAR SCHEDULER</h2>
+      <p>90 min work / 15 min break</p>
+      <button onclick="location.href='schedule.html'">OPEN →</button>
     </div>
-  </div>
 
-  <div class="grid grid-4">
-    <div class="card"><div class="small">ENGLISH</div><div style="font-size:22px;font-weight:700">2 days</div><div class="progress"><div class="fill" style="width:15%"></div></div></div>
-    <div class="card"><div class="small">HTML/CSS</div><div style="font-size:22px;font-weight:700">5%</div><div class="progress"><div class="fill" style="width:5%"></div></div></div>
-    <div class="card"><div class="small">PYTHON</div><div style="font-size:22px;font-weight:700">0%</div><div class="progress"><div class="fill" style="width:2%"></div></div></div>
-    <div class="card"><div class="small">MATH</div><div style="font-size:22px;font-weight:700">0%</div><div class="progress"><div class="fill" style="width:2%"></div></div></div>
-  </div>
+    <div class="section">
+      <h2>📸 DAILY EVIDENCE LOCKER</h2>
+      <p>Insert screenshot + how you solved it</p>
+      <button onclick="location.href='evidence.html'">OPEN →</button>
+    </div>
 
-  <div class="grid grid-2">
-    <div class="card">
-      <div class="card-header">
-        <h3><span class="amber">1.</span> EMPIRE OF VOICE</h3>
-        <a href="evidence.html?task=English" class="btn-outline btn">Open</a>
+    <div class="section" id="dashboard">
+      <h2>📊 KING'S DASHBOARD</h2>
+      <h3>Recent Uploads</h3>
+      <div id="uploadList">No tasks uploaded yet. Click "Upload Evidence" to start.</div>
+      
+      <h3>Progress Analysis</h3>
+      <div id="analysis">
+        <p>ENGLISH: <span id="eng-progress">5%</span></p>
+        <div class="progress-bar"><div class="progress-fill" id="eng-bar" style="width:5%">5%</div></div>
+        
+        <p>HTML/CSS: <span id="html-progress">5%</span></p>
+        <div class="progress-bar"><div class="progress-fill" id="html-bar" style="width:5%">5%</div></div>
+        
+        <p>PYTHON: <span id="py-progress">0%</span></p>
+        <div class="progress-bar"><div class="progress-fill" id="py-bar" style="width:0%">0%</div></div>
+        
+        <p>MATH: <span id="math-progress">0%</span></p>
+        <div class="progress-bar"><div class="progress-fill" id="math-bar" style="width:0%">0%</div></div>
       </div>
-      <div class="small">English = keys to world</div>
+    </div>
+
+    <div class="section">
+      <h2>Battle Plans</h2>
+      <h3>English = keys to world</h3>
       <ul>
-        <li><span>•</span>Daily: BBC 6min + shadowing</li>
-        <li><span>•</span>Decree: 2min recording</li>
-        <li><span>•</span>Evidence: audio + screenshot</li>
+        <li>Daily: BBC 6min + shadowing</li>
+        <li>Decree: 2min recording</li>
+        <li>Evidence: audio + screenshot</li>
+      </ul>
+      
+      <h3>HTML + Python = sites, apps, games</h3>
+      <ul>
+        <li>HTML/CSS: 90min - build face</li>
+        <li>Python: 90min - build brain</li>
+        <li>Project: Dashboard + calculator</li>
+        <li>Upload code screenshot daily</li>
+      </ul>
+      
+      <h3>Mathematics = power</h3>
+      <ul>
+        <li>Daily: Khan Algebra 30min</li>
+        <li>Focus: variables, functions</li>
+        <li>Solve 5 problems, screenshot</li>
+        <li>Write how you solved</li>
       </ul>
     </div>
 
-    <div class="card">
-      <div class="card-header">
-        <h3><span class="amber">2.</span> EMPIRE OF CODE</h3>
-        <a href="evidence.html?task=HTML/CSS" class="btn-outline btn">Open</a>
-      </div>
-      <div class="small">HTML + Python = sites, apps, games</div>
+    <div class="section">
+      <h2>Build products, not tutorials</h2>
       <ul>
-        <li><span>•</span>HTML/CSS: 90min - build face</li>
-        <li><span>•</span>Python: 90min - build brain</li>
-        <li><span>•</span>Project: Dashboard + calculator</li>
-        <li><span>•</span>Upload code screenshot daily</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3><span class="amber">3.</span> EMPIRE OF LOGIC</h3>
-        <a href="evidence.html?task=Math" class="btn-outline btn">Open</a>
-      </div>
-      <div class="small">Mathematics = power</div>
-      <ul>
-        <li><span>•</span>Daily: Khan Algebra 30min</li>
-        <li><span>•</span>Focus: variables, functions</li>
-        <li><span>•</span>Solve 5 problems, screenshot</li>
-        <li><span>•</span>Write how you solved</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <h3><span class="amber">4.</span> EMPIRE OF MONEY</h3>
-        <a href="evidence.html?task=Project" class="btn-outline btn">Open</a>
-      </div>
-      <div class="small">Build products, not tutorials</div>
-      <ul>
-        <li><span>•</span>Daily: 2hrs portfolio</li>
-        <li><span>•</span>Week 1: Finish dashboard</li>
-        <li><span>•</span>Week 2: Clone 3 sites</li>
-        <li><span>•</span>Goal: First $100</li>
+        <li>Daily: 2hrs portfolio</li>
+        <li>Week 1: Finish dashboard</li>
+        <li>Week 2: Clone 3 sites</li>
+        <li>Goal: First $100</li>
       </ul>
     </div>
   </div>
-</div>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem('kingTasks')) || [];
+let progress = JSON.parse(localStorage.getItem('kingProgress')) || {
+  english: 5, html: 5, python: 0, math: 0
+};
+
+window.onload = function() {
+  renderUploads();
+  updateProgressBars();
+}
+
+function handleUpload() {
+  const fileInput = document.createElement('input');
+  fileInput.type = 'file';
+  fileInput.accept = '.pdf,.jpg,.jpeg,.png,.mp3,.txt,.py,.html,.css,.m4a';
+  
+  fileInput.onchange = function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    
+    const date = new Date().toLocaleDateString();
+    const time = new Date().toLocaleTimeString();
+    const fileType = file.name.split('.').pop().toLowerCase();
+    
+    const newTask = {
+      name: file.name, type: fileType,
+      date: date, time: time, id: Date.now()
+    };
+    
+    tasks.unshift(newTask);
+    localStorage.setItem('kingTasks', JSON.stringify(tasks));
+    
+    autoUpdateProgress(file.name);
+    renderUploads();
+    updateProgressBars();
+    
+    alert(`✅ ${file.name} uploaded to Kingdom! Dashboard updated.`);
+  }
+  
+  fileInput.click();
+}
+
+function renderUploads() {
+  const uploadList = document.getElementById('uploadList');
+  if (tasks.length === 0) {
+    uploadList.innerHTML = 'No tasks uploaded yet. Click "Upload Evidence" to start.';
+    return;
+  }
+  
+  uploadList.innerHTML = tasks.map(task => `
+    <div class="task-item">
+      ✅ <strong>${task.name}</strong> | ${task.type.toUpperCase()} | ${task.date} ${task.time}
+      <button onclick="analyzeTask('${task.name}', ${task.id})">Analyze Steps</button>
+      <button onclick="deleteTask(${task.id})" style="background:#ff4444;">Delete</button>
+    </div>
+  `).join('');
+}
+
+function autoUpdateProgress(fileName) {
+  const name = fileName.toLowerCase();
+  if (name.includes('eng') || name.includes('bbc') || name.includes('audio') || name.includes('m4a')) {
+    progress.english = Math.min(progress.english + 5, 100);
+  }
+  if (name.includes('html') || name.includes('css') || name.includes('web')) {
+    progress.html = Math.min(progress.html + 5, 100);
+  }
+  if (name.includes('py') || name.includes('python')) {
+    progress.python = Math.min(progress.python + 5, 100);
+  }
+  if (name.includes('math') || name.includes('khan') || name.includes('algebra')) {
+    progress.math = Math.min(progress.math + 5, 100);
+  }
+  localStorage.setItem('kingProgress', JSON.stringify(progress));
+}
+
+function updateProgressBars() {
+  document.getElementById('eng-progress').innerText = progress.english + '%';
+  document.getElementById('eng-bar').style.width = progress.english + '%';
+  document.getElementById('eng-bar').innerText = progress.english + '%';
+  
+  document.getElementById('html-progress').innerText = progress.html + '%';
+  document.getElementById('html-bar').style.width = progress.html + '%';
+  document.getElementById('html-bar').innerText = progress.html + '%';
+  
+  document.getElementById('py-progress').innerText = progress.python + '%';
+  document.getElementById('py-bar').style.width = progress.python + '%';
+  document.getElementById('py-bar').innerText = progress.python + '%';
+  
+  document.getElementById('math-progress').innerText = progress.math + '%';
+  document.getElementById('math-bar').style.width = progress.math + '%';
+  document.getElementById('math-bar').innerText = progress.math + '%';
+}
+
+function analyzeTask(fileName, id) {
+  alert(`📊 Analysis for ${fileName}:
+
+1. Task uploaded to Kingdom ✅
+2. Evidence recorded in Dashboard ✅
+3. Progress auto-updated ✅
+4. Time logged: ${new Date().toLocaleString()} ✅
+
+Next Step: Open the file and write HOW you solved it.`);
+}
+
+function deleteTask(id) {
+  tasks = tasks.filter(t => t.id !== id);
+  localStorage.setItem('kingTasks', JSON.stringify(tasks));
+  renderUploads();
+}
+</script>
+
 </body>
 </html>
